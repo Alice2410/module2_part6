@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "npm run copyStorage && npm run makeStorage && npm run build && node ./build/server/server.js",
+    "start": "npm run pm2:delete && npm run copyStorage && npm run makeStorage && npm run build && pm2 start ./build/server/server.js --attach",
     "build": "rm -R ./build || true && npm run build:back && npm run build:front && mkdir ./build && npm run copyAllBuilds && npm run copySrc && npm run copyModulesDir",
     "build:back": "cd ./server && npm run build",
     "build:front": "cd ./app && npm run build",
@@ -8,8 +8,8 @@
     "copySrc": "cp -R ./src ./build/pages",
     "copyModulesDir": "cp -R ./server/node_modules ./build/node_modules",
     "copyStorage": "cp -R ./storage/* ./src/resources/images || true",
-    "makeStorage": "rm -R ./storage || true && mkdir ./storage"
-    
+    "makeStorage": "rm -R ./storage || true && mkdir ./storage",
+    "pm2:delete": "pm2 delete ./build/server/server.js || true"
   },
   "devDependencies": {
     "@types/node": "^17.0.23"
@@ -17,6 +17,7 @@
   "dependencies": {
     "jsonwebtoken": "^8.5.1",
     "passport": "0.5.2",
-    "passport-local": "1.0.0"
+    "passport-local": "1.0.0",
+    "pm2": "^5.2.0"
   }
 }
