@@ -8,6 +8,6 @@ const generator = () => {
 };
 
 export let accessLogStream = rfs.createStream( generator, {
-    interval: '1h',
+    interval: '1d',
     path: config.LOG_PATH,
 });
