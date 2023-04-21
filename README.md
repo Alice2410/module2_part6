@@ -1,4 +1,4 @@
-# Module2_Part5
+# Module2_Part6
 `Project author:` Alice Bushlya
 
 [**Issues**](https://github.com/Alice2410/module2_part5/issues)
